@@ -52,15 +52,16 @@ function() {
   var processed = 0;
 
   casper.repeat(messageCount, function() {
-    // Wait until the Inbox button is visible. We also have a 1s pause here
-    // because Yammer was timing out under the load.
+    // Wait until the Inbox button is visible.
     casper.then(function() {
       this.waitUntilVisible('#uni-messages');
-      this.wait(1000);
     });
 
     // Open the inbox and click the first unread message.
     casper.thenOpen('https://www.yammer.com/lullabot.com/#inbox/index', function() {
+      // We also have a 1s pause here because Yammer was timing out under the load.
+      this.wait(1000);
+
       this.waitUntilVisible('div.yj-inbox-unread-list li.yj-unread-item', function() {
         this.click('div.yj-inbox-unread-list ul li.yj-unread-item:first-child');
         processed++;
