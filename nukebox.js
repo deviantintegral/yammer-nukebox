@@ -62,7 +62,7 @@ function() {
     // Open the inbox and click the first unread message.
     casper.thenOpen('https://www.yammer.com/lullabot.com/#inbox/index', function() {
       this.waitUntilVisible('div.yj-inbox-unread-list li.yj-unread-item', function() {
-        this.click('div.yj-inbox-unread-list ul > li.yj-unread-item:first-child');
+        this.click('div.yj-inbox-unread-list ul li.yj-unread-item:first-child');
         processed++;
       });
     });
